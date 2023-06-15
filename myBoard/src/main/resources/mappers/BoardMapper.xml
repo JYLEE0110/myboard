@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.myBoard.mappers.BoardMapper">
+
+
+<!-- BoardMapper id = boardList -->
+<select id="boardList"  parameterType="com.example.myBoard.dto.PageRequestDTO" resultType= "com.example.myBoard.dto.BoardDTO">
+SELECT * FROM tbl_board
+where tno > 0
+order by tno desc
+limit #{skip}, #{size}
+</select>
+
+
+<!-- BoardMapper id = total -->
+<select id="total">
+ select count(*) 
+ from (select tno from tbl_board 
+ where tno > 0 limit #{countEnd}) tbl_board
+</select>
+
+
+<!-- BoardMapper id = read -->
+<select id="read" resultType= "com.example.myBoard.dto.BoardDTO" parameterType = "long">
+SELECT * FROM tbl_board 
+WHERE tno = #{tno}
+</select>
+
+
+<!-- BoardMapper id = boardInsert -->
+<insert id="boardInsert" parameterType="com.example.myBoard.dto.BoardDTO">
+insert into tbl_board (title, content , writer) values (#{title}, #{content}, #{writer})
+  <selectKey resultType="long" keyProperty="tno" order="AFTER">
+        SELECT LAST_INSERT_ID()
+  </selectKey> 
+  <!-- 몇 번으로 등록됐는지 확인하기 위해 사용 -->
+</insert>
+
+
+<!-- BoardMapper id = boardDelete -->
+<delete id="boardDelete" parameterType="long">
+    delete from tbl_board where tno = #{tno}
+</delete>
+
+
+<!-- BoardMapper id = boardupdate -->
+<update id="boardUpdate" parameterType="com.example.myBoard.dto.BoardDTO">
+update tbl_board set title = #{title} , content = #{content} , writer =#{writer}, modifyDate = now() where tno =#{tno}
+</update>    
+</mapper>
