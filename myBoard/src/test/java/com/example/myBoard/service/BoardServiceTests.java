@@ -45,11 +45,13 @@ public class BoardServiceTests {
         boardService.boardInsert(boardDTO);
     }
 
+
     // Service testRead
     @Test
     public void testRead() {
         log.info( boardService.read(1L));
     }
+
 
     // Service testDelete
     @Test
@@ -59,6 +61,7 @@ public class BoardServiceTests {
         boardService.boardDelete(786408L);
     }
 
+    
     // Service testUpdate
     @Test
     @Commit

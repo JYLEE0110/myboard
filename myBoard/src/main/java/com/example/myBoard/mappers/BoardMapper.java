@@ -8,22 +8,22 @@ import com.example.myBoard.dto.PageResponseDTO;
 
 public interface BoardMapper {
     
-    // List 
+    // List mapper
     List<BoardDTO> boardList(PageRequestDTO requestDTO);
 
-    // total 
+    // total mapper
     int total(PageRequestDTO requestDTO);
 
-    // read 
+    // read mapper
     BoardDTO read(Long tno);
 
-    // insert
+    // insert mapper
     int boardInsert(BoardDTO boardDTO);
 
-    // delete 786407
+    // delete mapper
     int boardDelete(Long tno);
 
-    // update
+    // update mapper
     int boardUpdate(BoardDTO boardDTO);
     
 }

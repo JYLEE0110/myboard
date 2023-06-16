@@ -8,7 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-    
+
+        <!-- fragment content start -->
         <h1>ModifyPage</h1>
         <div layout:fragment="content">
             <h1>ReadPage</h1>
@@ -19,129 +20,77 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="card">
+                      <!-- action modfiy -->
                       <form class="form-horizontal" action="/board/modify/" method="post">
                         <div class="card-body">
                           <h4 class="card-title">상세 페이지</h4>
     
+                          <!-- tno -->
                           <div class="form-group row">
-                            <label
-                              for="fname"
-                              class="col-sm-3 text-end control-label col-form-label"
-                              >Tno</label>
+                            <label for="fname" class="col-sm-3 text-end control-label col-form-label">Tno</label>
                             <div class="col-sm-9">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="fname"
-                                th:value="${boardDTO.tno}"
-                                readonly
-                                name = "tno"
-                               />
+                              <input type="text" class="form-control" id="fname" th:value="${boardDTO.tno}" readonly name = "tno"/>
                             </div>
                           </div>
+
+                          <!-- title -->
                           <div class="form-group row">
-                            <label
-                              for="lname"
-                              class="col-sm-3 text-end control-label col-form-label"
-                              >Title</label
-                            >
+                            <label for="lname" class="col-sm-3 text-end control-label col-form-label">Title</label>
                             <div class="col-sm-9">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="lname"
-                                th:value="${boardDTO.title}"
-                                name = "title"
-                                />
+                              <input type="text" class="form-control" id="lname" th:value="${boardDTO.title}" name = "title"/>
                             </div>
                           </div>
+
+                          <!-- writer -->
                           <div class="form-group row">
-                            <label
-                              for="lname"
-                              class="col-sm-3 text-end control-label col-form-label"
-                              >Writer</label
-                            >
+                            <label for="lname" class="col-sm-3 text-end control-label col-form-label">Writer</label>
                             <div class="col-sm-9">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="lname"
-                                th:value="${boardDTO.writer}"
-                                name = "writer"
-                                />
+                              <input type="text" class="form-control" id="lname" th:value="${boardDTO.writer}" name = "writer"/>
                             </div>
                           </div>
+
+                          <!-- registDate -->
                           <div class="form-group row">
-                            <label
-                              for="email1"
-                              class="col-sm-3 text-end control-label col-form-label"
-                              >RegistDate</label
-                            >
+                            <label for="email1" class="col-sm-3 text-end control-label col-form-label">RegistDate</label>
                             <div class="col-sm-9">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="email1"
-                                th:value="${boardDTO.registDate}"
-                                name = "registDate"
-                              />
+                              <input type="text" class="form-control" id="email1" th:value="${boardDTO.registDate}" name = "registDate"/>
                             </div>
                           </div>
+
+                          <!-- modifyDate -->
                           <div class="form-group row">
-                            <label
-                              for="cono1"
-                              class="col-sm-3 text-end control-label col-form-label"
-                              >ModfiyDate</label
-                            >
+                            <label for="cono1" class="col-sm-3 text-end control-label col-form-label">ModfiyDate</label>
                             <div class="col-sm-9">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="cono1"
-                                th:value="${boardDTO.modifyDate}"
-                                name = "modifyDate"
-                                />
+                              <input type="text" class="form-control" id="cono1" th:value="${boardDTO.modifyDate}" name = "modifyDate"/>
                             </div>
                           </div>
+
+                          <!-- content -->
                           <div class="form-group row">
-                            <label
-                              for="cono1"
-                              class="col-sm-3 text-end control-label col-form-label"
-                              >Content</label
-                            >
+                            <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Content</label>
                             <div class="col-sm-9">
                               <textarea class="form-control"   th:text="${boardDTO.content}"  name = "content"></textarea>
                             </div>
                           </div>
+
                         </div>
                         <div class="border-top">
                           <div class="card-body">
-                            <button type="button" class="btn btn-primary modifyButton">
-                              수정
-                            </button>
-                              
-    
+                            <button type="button" class="btn btn-primary modifyButton">수정</button>
                           </div>
                         </div>
+
                       </form>
                     </div>
-                
-                 
                   </div>
-              
-    
-                
-                <!-- editor -->
-                
-    
-        </div>
-    </div>
+                </div>
+              </div>
+               <!-- fragment content end -->
 
+    <!-- javaScript start -->
     <script layout:fragment="script" th:inline="javascript">
         const button2 = document.querySelector(".modifyButton")
         const actionForm = document.querySelector(".form-horizontal");
-
-
 
         button2.addEventListener("click", (e) => {
             actionForm.setAttribute("action", `/board/modify`)
@@ -149,5 +98,7 @@
             actionForm.submit();
         })
     </script>
+     <!-- javaScript end -->
+
 </body>
 </html>

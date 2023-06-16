@@ -17,6 +17,7 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService{
     
+    // 의존성 주입 
     private final BoardMapper boardMapper;
 
     // List Impl
@@ -32,7 +33,7 @@ public class BoardServiceImpl implements BoardService{
         .build();
     }
 
-
+    // total Impl 
     @Override
     public int total(PageRequestDTO requestDTO) {
        return 0;
@@ -45,11 +46,13 @@ public class BoardServiceImpl implements BoardService{
         return boardMapper.read(tno);
     }
 
+
     // insert Impl
     @Override
     public int boardInsert(BoardDTO boardDTO) {
         return boardMapper.boardInsert(boardDTO);
     }
+
 
     // delete Impl
     @Override
@@ -57,6 +60,7 @@ public class BoardServiceImpl implements BoardService{
         return boardMapper.boardDelete(tno);
     }
 
+    
     // update Impl
     @Override
     public int boardUpdate(BoardDTO boardDTO) {

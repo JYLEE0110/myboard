@@ -49,5 +49,7 @@ insert into tbl_board (title, content , writer) values (#{title}, #{content}, #{
 <!-- BoardMapper id = boardupdate -->
 <update id="boardUpdate" parameterType="com.example.myBoard.dto.BoardDTO">
 update tbl_board set title = #{title} , content = #{content} , writer =#{writer}, modifyDate = now() where tno =#{tno}
-</update>    
+</update>
+
+
 </mapper>

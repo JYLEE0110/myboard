@@ -21,11 +21,11 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class BoardController {
     
-    
+    // 의존성 주입 
     private final BoardService boardService;
 
 
-    // 전체 리스트
+    // BoardList
     @GetMapping("list")
     public void getList(PageRequestDTO pageRequestDTO, Model model){
         log.info("GET | /board/list");
@@ -37,7 +37,7 @@ public class BoardController {
     }
 
 
-    // 상세페이지
+    // BoardRead
     @GetMapping("read/{tno}")
     public String getReadPage(@PathVariable("tno") Long tno, Model model){
         log.info("GET | /board/read");
@@ -47,14 +47,14 @@ public class BoardController {
     }
 
 
-    // 등록페이지
+    // Get : BoardRegist
     @GetMapping("regist")
     public void getRegistPage(){
         log.info("GET | /board/regist");
     }
 
 
-    // 등록페이지
+    // Post : BoardRegist 
     @PostMapping("regist")
     public String postRegistPage(BoardDTO boardDTO) {
         log.info("POST | /board/regist");
@@ -63,7 +63,7 @@ public class BoardController {
     }
 
     
-    // 업데이트 페이지 
+    // Post : BoardUpdate
     @GetMapping("modify/{tno}")
     public String getModifyPage(@PathVariable("tno") Long tno, Model model){
         BoardDTO boardDTO = boardService.read(tno);
@@ -71,6 +71,8 @@ public class BoardController {
         return "/board/modify";
     }
 
+
+    // Post : BoardUpdate 
     @PostMapping("modify")
     public String postModifyPage(BoardDTO boardDTO){
         log.info("POST /board/modfiy");
@@ -80,13 +82,12 @@ public class BoardController {
 
     }
 
-    // Post 삭제 
+
+    // Post : BoardDelete
     @PostMapping("delete/{tno}")
     public String postDeletePage(@PathVariable("tno") Long tno) {
         log.info("POST | /board/delete");
         boardService.boardDelete(tno);
         return "redirect:/board/list";
     }
-
-
 }
